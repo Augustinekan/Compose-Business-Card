@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -19,9 +20,11 @@ import androidx.compose.material.icons.rounded.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -71,7 +74,7 @@ fun ComposeBusinessCard(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun ImageProfileComposable(modifier: Modifier = Modifier){
+fun ImageProfileComposable(){
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -88,6 +91,10 @@ fun DeveloperImage(modifier: Modifier = Modifier){
     Image(painter = imageResource, contentDescription = "Passport Image", modifier = modifier
         .width(width = 120.dp)
         .height(height = 120.dp)
+        .clip(CircleShape)
+        .border(width = 2.dp, color =colorResource(
+            id = R.color.JungleGreen
+        ))
        )
 }
 
@@ -98,7 +105,9 @@ fun DeveloperName(modifier: Modifier = Modifier){
 
 @Composable
 fun Tagline(){
-    Text(text = stringResource(id = R.string.AndroidDev), color = Color(0xff1b443a), fontSize = 18.sp)
+    Text(text = stringResource(id = R.string.AndroidDev), color = colorResource(
+        id = R.color.JungleGreen
+    ), fontSize = 18.sp)
 }
 
 
@@ -120,7 +129,9 @@ fun FooterTile(icon: ImageVector,text:String, modifier: Modifier = Modifier){
     Row (
         modifier = modifier.padding(vertical = 4.dp)
             ){
-        Icon( imageVector = icon,  "phone", modifier = modifier.padding(horizontal = 12.dp),tint = Color(0xff1b443a))   // ok
+        Icon( imageVector = icon,  "phone", modifier = modifier.padding(horizontal = 12.dp),tint = colorResource(
+            id = R.color.JungleGreen
+        ))   // ok
         Text(text = text)
     }
 }
